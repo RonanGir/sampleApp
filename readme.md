@@ -2,7 +2,7 @@
 
 Moquer les comportements de méthode est une pratique courante et reconnu lors de la réalisation de tests unitaires. 
 
-Comment moquer des méthodes privées, des méthodes statiques... ?
+*Comment moquer des méthodes privées, des méthodes statiques... ?*
 
 ## Qu'est-ce que PowerMockito ?
 PowerMockito est une API d'extension de PowerMock pour prendre en charge Mockito. Il fournit des capacités pour travailler 
@@ -11,14 +11,12 @@ avec l'API Java Reflection d'une manière simple pour surmonter les problèmes d
 
 PowerMock effectue ces astuces en modifiant le code d'octet au moment de l'exécution lorsque les tests sont en cours d'exécution.
 
-    
-
     - les méthodes "static" : méthode qui s'appelle sur une classe et non une instance de classe)
     - les méthodes "final" : ne peut pas être modifiée, sa redéfinition grâce à l'héritage est interdite.)
     - les méthodes "private" : n'est accessible qu'à partir du fichier où elle est définie)
   
 *NB: Certaines version de Mockito et PowerMockito ne sont pas compatibles 
-=> https://github.com/powermock/powermock/wiki/Mockito#how-to-use-argument-matchers*
+=> https://github.com/powermock/powermock/wiki/Mockito#supported-versions*
 
 
 ## Preparation des Tests avec PowerMockito
@@ -46,9 +44,9 @@ PowerMock effectue ces astuces en modifiant le code d'octet au moment de l'exéc
 `@PrepareForTest` représente un tableau de noms complets de types que nous voulons simuler.
 
 ## Sources
-=> https://github.com/powermock/powermock/wiki
-=> https://www.baeldung.com/intro-to-powermock
-=> https://fr.wikibooks.org/wiki/Programmation_Java/R%C3%A9flexion
+* https://github.com/powermock/powermock/wiki
+* https://www.baeldung.com/intro-to-powermock
+*  https://fr.wikibooks.org/wiki/Programmation_Java/R%C3%A9flexion
 
 
     

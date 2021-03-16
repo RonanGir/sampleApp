@@ -42,6 +42,7 @@ public class BuyServiceImplTest {
         Integer priceInEuro = 150;
         String name = "Snoopy";
 
+        Mockito.when(actionService.clean()).thenReturn("Clean Dog");
         Dog boughtDog = buyService.buyADog(priceInEuro, name);
 
         assertEquals(name, boughtDog.getName());
@@ -53,7 +54,6 @@ public class BuyServiceImplTest {
         Integer priceInEuro = 70;
         String name = "Dirty Snoopy";
 
-        Mockito.when(actionService.clean()).thenCallRealMethod();
         Dog boughtDog = buyService.buyADog(priceInEuro, name);
 
         assertEquals(name, boughtDog.getName());
@@ -61,13 +61,29 @@ public class BuyServiceImplTest {
     }
 
     @Test
-    public void buyACleanDogWhenYouKnowTheSeller() {
+    public void buyACleanDogWithADiscount() {
         Integer priceInEuro = 70;
         String name = "Clean Snoopy";
 
         PowerMockito.mockStatic(PaymentUtil.class);
         PowerMockito.when(PaymentUtil.priceIsPaid(Mockito.anyInt())).thenReturn(true);
         PowerMockito.when(PaymentUtil.paidForCleaning(Mockito.anyInt())).thenReturn(true);
+        Mockito.when(actionService.clean()).thenReturn("Clean Dog");
+
+        Dog boughtDog = buyService.buyADog(priceInEuro, name);
+
+        assertEquals(name, boughtDog.getName());
+
+    }
+
+    @Test
+    public void buyACleanDogWithADiscountWithMockito() {
+        Integer priceInEuro = 70;
+        String name = "Clean Snoopy";
+
+        Mockito.mockStatic(PaymentUtil.class);
+        Mockito.when(PaymentUtil.priceIsPaid(Mockito.anyInt())).thenReturn(true);
+        Mockito.when(PaymentUtil.paidForCleaning(Mockito.anyInt())).thenReturn(true);
         Mockito.when(actionService.clean()).thenReturn("Clean Dog");
 
         Dog boughtDog = buyService.buyADog(priceInEuro, name);
@@ -95,11 +111,6 @@ public class BuyServiceImplTest {
     public void buyACleanDogWithNotEnoughMoney() {
         Integer priceInEuro = 0;
         String name = "Snoopy";
-
-        PowerMockito.mockStatic(PaymentUtil.class);
-        PowerMockito.when(PaymentUtil.priceIsPaid(Mockito.anyInt())).thenCallRealMethod();
-        PowerMockito.when(PaymentUtil.paidForCleaning(Mockito.anyInt())).thenCallRealMethod();
-        Mockito.when(actionService.clean()).thenReturn("Dirty Dog");
 
         Dog boughtDog = buyService.buyADog(priceInEuro, name);
 

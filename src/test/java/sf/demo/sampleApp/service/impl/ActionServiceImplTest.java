@@ -43,12 +43,12 @@ public class ActionServiceImplTest {
 
         // Mock partiel
         ActionServiceImpl mockActions = PowerMockito.spy(bfSvcTest);
-        PowerMockito.when(mockActions, "playWithBall").thenReturn("Go play Human");
+        PowerMockito.when(mockActions, "playWithBall").thenReturn("Go play video games Human");
 
         String playStory = mockActions.play();
 
         PowerMockito.verifyPrivate(mockActions).invoke("playWithBall");
-        assertEquals("Go play Human I'm done playing", playStory);
+        assertEquals("Go play video games Human I'm done playing", playStory);
     }
 
 }

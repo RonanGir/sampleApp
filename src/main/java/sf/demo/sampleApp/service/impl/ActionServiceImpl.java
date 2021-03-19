@@ -27,6 +27,28 @@ public class ActionServiceImpl implements ActionService {
         return "Your dog is clean";
     }
 
+
+    public void poop() {
+        goToThePark();
+        findHidePlaces();
+        findHidePlaces();
+        cleanAfterPoop();
+    }
+
+    public String goToThePark() {
+        logger.info("go out the house");
+        logger.info("run to the park");
+        return "I am arrived";
+    }
+
+    public void findHidePlaces() {
+        logger.info("look out for hiding places");
+    }
+
+    public void cleanAfterPoop() {
+        logger.info("bon appetit");
+    }
+
     private String playWithBall() {
         logger.info("Get in position to play");
         logger.info("Human Human Human, throw the ball");
